@@ -86,8 +86,8 @@ nav:
   - Agenda: programacao/agenda.md
   - Laboratórios:
     - Introdução:
-      - Drones: aulas/lab1/index.md
-      - ROS: aulas/lab2/index.md 
+      - Drones: aulas/introducao/drone/index.md
+      - ROS: aulas/introducao/ros/index.md 
     - Lab01:
       - Voando sem sair do chão: aulas/lab3/index.md 
       - Decolando: aulas/lab2/index.md
