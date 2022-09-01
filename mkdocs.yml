@@ -40,10 +40,10 @@ extra:
 
 # Extensions / plugins
 plugins:
-  #- git-revision-date-localized
+  - git-revision-date-localized
   - search
-  - mkdocs-jupyter:
-      execute: False
+ # - mkdocs-jupyter:
+ #     execute: False
 
 markdown_extensions:
   - markdown.extensions.tables
