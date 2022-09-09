@@ -1,3 +1,11 @@
+exemplo anda em linha reta 
+desafio odometria 2d fazer 2 quadrados
+
+
+
+
+
+
 ## O que esse vamos ver neste lab?
 
 - Instalação e uso de bibliotecas externas para arduino

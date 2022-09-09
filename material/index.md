@@ -16,9 +16,9 @@ Ao final da disciplina o aluno será capaz de:
 Vamos trabalhar com a linguagem de programação Python para desenvolver códigos simples para controlar o drone. Usaremos um framework para sistemas robóticos chamado (ROS) Robot Operating System. Os conceitos básicos serão abordados em aula, não se preocupe. 
 
 
-## Gostei deste tema, como posso me aprofundar e saber mais?
+## Gostei do tema, como posso aprender mais?
 
-O INSPER disponibiliza diversas disciplinas que abordam de forma profunda o que vimos nesta atividade complementar: 
+O INSPER possui diversas disciplinas que abordam de forma profunda o que vimos nesta atividade complementar: 
 
 - Robótica Computacional 
 - Visão Computacional
