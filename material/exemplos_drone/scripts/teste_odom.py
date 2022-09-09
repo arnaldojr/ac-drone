@@ -87,7 +87,7 @@ if __name__=="__main__":
 
                 vel_pub.publish(vel)
                 rospy.sleep(0.3)
-                d = ((x-x0)**2+(y-y0)**2)**0.5
+                d = ((x-x0)**2+(y-y0)**2)**0.5 # istancia euclidiana
                 print(x, x0)
 
                 print(d)

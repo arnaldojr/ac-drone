@@ -11,20 +11,11 @@ Não precisamos de um conhecimento profundo sobre o ROS para participar da nossa
 
 ## Conceitos simples que precisamos compreender. 
 
-### Como o vou comunicar o meu código do pc com o drone
-
-A topologia que vamos utilizar em nossa aplicação será:
-
-- O drone está configurado como Acess Point, ou seja o drone irá fornecer um ponto de rede Wifi para que outros dispositivos se conectem a ele. 
-- O nome desta rede é ````bebop seguida do serial number do drone```
-- Vamos conectar o Wifi do nosso computador na rede criada pelo drone do drone. 
-
-!!! warning
-    A rede do bebop não tem senha, basta se conectar. Esta rede não possui acesso internet, se precisar usar internet terá que trocar a rede wifi. 
+O ROS é um framework commplexo, não vamos conseguir abordar tudo que a ferramenta oferece. vamos ver apenas conceitos simples para a nossa aula.
 
 ### E o que preciso entender de ROS
 
-Vamos explorar brevemente e compreender o básico sobre ROS. 
+Compreender como o framework funciona e quem são os principais personagens. Vamos explorar brevemente e entender o básico sobre ROS. 
 
 ### ROS MASTER
 
@@ -58,4 +49,17 @@ Quais os tipos de topicos:
 ROS MENSAGES
 
 O ROS mensages define o tipo e o formato dos dados. É nele que sabemos se as msg são do tipo String, float e afins. l de ROS.
+
+
+### Comandos importantes do terminal que vamos usar bastante
+
+**rostopic list** - lista os tópicos do ros
+**rosrun exemplo codigo.py** - executa o script codigo.py que está na pasta exemplo
+**rqt_image_view** - abre a câmera do drone
+**rostopic pub --once /bebop/takeoff std_msgs/Empty** - decola o drone 
+**rostopic pub --once /bebop/land std_msgs/Empty** - pousa o drone 
+**rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/bebop/cmd_vel** - teleoperar o drone com o teclado
+
+Os demais comandos vamos aprender enquanto desenvolvemos nossos códigos.... Partiu lab1!
+
 

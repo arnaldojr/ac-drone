@@ -87,9 +87,14 @@ De forma simetrica, as helices empuram o ar para baixo, logo o torque resultante
 
 ## Sistema de coordenadas
 
-A orientação é especificada em Notação de ângulos de Euler XYZ (roll-pitch-yaw), (φ,θ,Ψ)
+A orientação é especificada em Notação de ângulos de Euler XYZ (roll,pitch,yaw), (φ,θ,Ψ). Os seis graus de liberdade do drone,
+que consistem nos movimentos de translação nos eixos: x, y e z; e os movimentos de rotação, roll (arfagem), pitch (rolagem) e yaw (guinada).
 
 ![](bebop-coordenadas.png)
 
 
 ![](drone-dinamica.gif)
+
+Avaliação da variação angular em roll. 
+
+![](drone-roll.gif)
