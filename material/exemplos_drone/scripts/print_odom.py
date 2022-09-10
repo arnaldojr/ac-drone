@@ -42,12 +42,11 @@ if __name__=="__main__":
 
     # Cria um subscriber que chama recebeu_leitura sempre que houver nova odometria
     recebe_scan = rospy.Subscriber(topico_odom, Odometry , recebeu_leitura)
-
-
+    vel_pub = rospy.Publisher("bebop/cmd_vel", Twist, queue_size = 1)
     try:
         while not rospy.is_shutdown():
-#            velocidade = Twist(Vector3(0, 0, 0), Vector3(0, 0, 0))
-#            velocidade_saida.publish(velocidade)
+            #velocidade = Twist(Vector3(0, 0, 0), Vector3(0, 0, 0))
+            #vel_pub.publish(velocidade)
             print("x {} y {} z {}".format(x, y, z))
             rospy.sleep(2)
     except rospy.ROSInterruptException:

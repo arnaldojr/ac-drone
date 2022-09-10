@@ -253,15 +253,20 @@ Agora que já entendemos, de forma breve, como o código funciona vamos rodar no
 
 ## Rodando o código no drone
 
-Para 
+Vamso rodar o nosso exemplo ``print_odom.py``. 
+
+Rodar um script python é um pouco diferente de rodar um código ROS em python, isso por que o ROS cria um ecosistema para rodar esse código, então a forma que vamos invocar o código será:
+
+Em um novo terminal, digite:
+
+```bash
+rosrun exemplo_drone print_odom.py
+```
+
+Para dar certo, o nosso notebook e o drone devem estar na mesma rede wifi e o comando ``bebop.sh`` tambem já está rodando.
 
 
-
-
-**rosrun exemplo codigo.py** - executa o script codigo.py que está na pasta exemplo
-
-**rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/bebop/cmd_vel** - teleoperar o drone com o teclado
-
+Caso o valores de odometria não atualize, faça o takeoff do drone (sem helice) antes e rode novamente.
 
 
 

@@ -90,11 +90,11 @@ nav:
       - ROS: aulas/introducao/ros/index.md 
     - Lab01:
       - Voando sem sair do chão: aulas/lab1/index.md 
-      - Decolando: aulas/lab2/index.md
-      - Desafio1: aulas/lab2/index.md 
-    - Lab02:
-      - Controle por visão computacional: aulas/lab3/index.md 
-      - Desafio2: aulas/lab2/index.md 
-    - Lab03:
-      - Novos desafios: aulas/lab3/index.md 
-      - Desafio2: aulas/lab3/index.md
+      - Decolando: aulas/lab1/index2.md
+      - Desafio1: aulas/desafio1/index.md 
+#    - Lab02:
+#      - Controle por visão computacional: aulas/lab3/index.md 
+#      - Desafio2: aulas/lab2/index.md 
+ #   - Lab03:
+ #     - Novos desafios: aulas/lab3/index.md 
+ #     - Desafio2: aulas/lab3/index.md
