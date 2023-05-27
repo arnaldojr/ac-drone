@@ -53,12 +53,12 @@ O ROS mensages define o tipo e o formato dos dados. É nele que sabemos se as ms
 
 ### Comandos importantes do terminal que vamos usar bastante
 
-**rostopic list** - lista os tópicos do ros
-**rosrun exemplo codigo.py** - executa o script codigo.py que está na pasta exemplo
-**rqt_image_view** - abre a câmera do drone
-**rostopic pub --once /bebop/takeoff std_msgs/Empty** - decola o drone 
-**rostopic pub --once /bebop/land std_msgs/Empty** - pousa o drone 
-**rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/bebop/cmd_vel** - teleoperar o drone com o teclado
+- **rostopic list** - lista os tópicos do ros
+- **rosrun exemplo codigo.py** - executa o script codigo.py que está na pasta exemplo
+- **rqt_image_view** - abre a câmera do drone
+- **rostopic pub --once /bebop/takeoff std_msgs/Empty** - decola o drone 
+- **rostopic pub --once /bebop/land std_msgs/Empty** - pousa o drone 
+- **rosrun teleop_twist_keyboard teleop_twist_keyboard.py cmd_vel:=/bebop/cmd_vel** - teleoperar o drone com o teclado
 
 Os demais comandos vamos aprender enquanto desenvolvemos nossos códigos.... Partiu lab1!
 
