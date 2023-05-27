@@ -1,0 +1,914 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Arnaldo Viana">
+      
+      
+        <link rel="canonical" href="https://arnaldojr.github.io/ac-drone/aulas/lab1/">
+      
+      
+        <link rel="prev" href="../introducao/ros/">
+      
+      
+        <link rel="next" href="index2/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.14">
+    
+    
+      
+        <title>Voando sem sair do chão - AC-Drones</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed:700|Oxygen+Mono|Source+Sans+Pro:700|Source+Serif+Pro&amp;display=swap">
+<link rel="stylesheet" href="../../assets/css/devlife.css">
+
+
+    <script>
+        window.ihandout_config = JSON.parse(`{"report": {"api-base": "https://devlife.insper-comp.com.br/api/offerings/1/", "url": "https://devlife.insper-comp.com.br/api/offerings/1/exercises/"}}`);
+    </script>
+
+
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#o-que-esse-vamos-ver-neste-lab" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AC-Drones" class="md-header__button md-logo" aria-label="AC-Drones" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AC-Drones
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Voando sem sair do chão
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/arnaldojr/ac-drone/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ac-drone
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AC-Drones" class="md-nav__button md-logo" aria-label="AC-Drones" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    AC-Drones
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/arnaldojr/ac-drone/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ac-drone
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programacao/agenda/" class="md-nav__link">
+        Agenda
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Laboratórios
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Laboratórios
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          Introdução
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          Introdução
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introducao/drone/" class="md-nav__link">
+        Drones
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introducao/ros/" class="md-nav__link">
+        ROS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+          Lab01
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Lab01
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Voando sem sair do chão
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Voando sem sair do chão
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-esse-vamos-ver-neste-lab" class="md-nav__link">
+    O que esse vamos ver neste lab?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracao-da-infraestrura" class="md-nav__link">
+    Configuração da Infraestrura
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuração da Infraestrura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boot-do-ssd" class="md-nav__link">
+    Boot do SSD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clone-do-repositorio" class="md-nav__link">
+    Clone do repositório
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conexao-entre-pc-e-o-drone" class="md-nav__link">
+    Conexão entre PC e o DRONE
+  </a>
+  
+    <nav class="md-nav" aria-label="Conexão entre PC e o DRONE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-o-vou-comunicar-o-meu-codigo-do-pc-com-o-drone" class="md-nav__link">
+    Como o vou comunicar o meu código do pc com o drone
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analisando-topicos-nodes-e-imagem" class="md-nav__link">
+    Analisando tópicos, nodes e imagem
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entendo-o-codigo-pythonros" class="md-nav__link">
+    Entendo o código Python/ROS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rodando-o-codigo-no-drone" class="md-nav__link">
+    Rodando o código no drone
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index2/" class="md-nav__link">
+        Decolando
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Desafio1/" class="md-nav__link">
+        Desafio1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Desafio2/" class="md-nav__link">
+        Desafio2
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#o-que-esse-vamos-ver-neste-lab" class="md-nav__link">
+    O que esse vamos ver neste lab?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracao-da-infraestrura" class="md-nav__link">
+    Configuração da Infraestrura
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuração da Infraestrura">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#boot-do-ssd" class="md-nav__link">
+    Boot do SSD
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clone-do-repositorio" class="md-nav__link">
+    Clone do repositório
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conexao-entre-pc-e-o-drone" class="md-nav__link">
+    Conexão entre PC e o DRONE
+  </a>
+  
+    <nav class="md-nav" aria-label="Conexão entre PC e o DRONE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#como-o-vou-comunicar-o-meu-codigo-do-pc-com-o-drone" class="md-nav__link">
+    Como o vou comunicar o meu código do pc com o drone
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analisando-topicos-nodes-e-imagem" class="md-nav__link">
+    Analisando tópicos, nodes e imagem
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entendo-o-codigo-pythonros" class="md-nav__link">
+    Entendo o código Python/ROS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rodando-o-codigo-no-drone" class="md-nav__link">
+    Rodando o código no drone
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Voando sem sair do chão</h1>
+
+<h2 id="o-que-esse-vamos-ver-neste-lab">O que esse vamos ver neste lab?<a class="headerlink" href="#o-que-esse-vamos-ver-neste-lab" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Decolando sem sair do chão<ul>
+<li>Configuração da infraestrutura<ul>
+<li>Boot do SSD no notebook</li>
+<li>clone do repositório</li>
+<li>Configurações iniciais com o drone</li>
+</ul>
+</li>
+<li>Conexão entre PC e Drone<ul>
+<li>Ajustando a conexão entre o drone e o notebook</li>
+<li>Analisando tópicos, nodes e imagem</li>
+</ul>
+</li>
+<li>Primeiro projeto<ul>
+<li>Entendo o código Python/ROS</li>
+<li>Rodando o código no Drone</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Desafio1<ul>
+<li>chegou a hora de criar asas e voar! </li>
+</ul>
+</li>
+</ul>
+<h2 id="configuracao-da-infraestrura">Configuração da Infraestrura<a class="headerlink" href="#configuracao-da-infraestrura" title="Permanent link">&para;</a></h2>
+<h3 id="boot-do-ssd">Boot do SSD<a class="headerlink" href="#boot-do-ssd" title="Permanent link">&para;</a></h3>
+<p>Vamos utilizar o SSD do 3°semestre de engenharia de computação para nossa atividade. </p>
+<p>Se você possui o SSD do 3°sem. faça o boot no seu PC. Caso não tenha, não tem problema, vamos emprestar um SSD para usar durante a aula.</p>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise</p>
+<p>Faça o Boot do SSD no seu PC, caso tenha dificuldades peça ajuda.
+O usuário e senha padrão do SSD é:
+user: borg
+senha: fl1pfl0p </p>
+</div>
+<h3 id="clone-do-repositorio">Clone do repositório<a class="headerlink" href="#clone-do-repositorio" title="Permanent link">&para;</a></h3>
+<p>Vamos utilizar alguns exemplos durante a aula que estão neste repositório, nosso próximo passo clonar esse repositório. </p>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise</p>
+<p>Faça clone deste repositório no diretório <code>~/catkin_ws/src</code> os comandos para isso estão abaixo, <code>abra um terminal e digite</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="w">   </span><span class="nb">cd</span><span class="w"> </span>~/catkin_ws/src
+<span class="w">   </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/arnaldojr/ac-drone
+<span class="w">   </span><span class="nb">cd</span><span class="w"> </span>~/catkin_ws
+<span class="w">   </span>catkin_make
+</code></pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning<p>Avalie o log do terminal para saber se deu tudo certo.</p>
+</p>
+</div>
+<h2 id="conexao-entre-pc-e-o-drone">Conexão entre PC e o DRONE<a class="headerlink" href="#conexao-entre-pc-e-o-drone" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>AINDA NAO É HORA DE DECOLAR, O DRONE DEVE ESTAR SEM HELICES!!</p>
+</div>
+<h3 id="como-o-vou-comunicar-o-meu-codigo-do-pc-com-o-drone">Como o vou comunicar o meu código do pc com o drone<a class="headerlink" href="#como-o-vou-comunicar-o-meu-codigo-do-pc-com-o-drone" title="Permanent link">&para;</a></h3>
+<p>A topologia que vamos utilizar em nossa aplicação será:</p>
+<ul>
+<li>O drone está configurado como Acess Point, ou seja o drone irá fornecer um ponto de rede Wifi para que outros dispositivos se conectem a ele. </li>
+<li>O nome desta rede é <code>`bebop seguida do serial number do drone</code></li>
+<li>Vamos conectar o Wifi do nosso computador na rede criada pelo drone do drone. </li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A rede do bebop não tem senha, basta se conectar. Esta rede não possui acesso internet, se precisar usar internet terá que trocar a rede wifi. </p>
+</div>
+<div class="admonition exercise">
+<p class="admonition-title">Exercise</p>
+<ul>
+<li>Identifique o serial number do drone que vai usar, tem uma etiqueta colada informando o numero;</li>
+<li>ligue o drone e conecte seu notebook na rede wifi do drone;</li>
+<li>Abra um terminal novo e digite:<ul>
+<li>./bebop.sh</li>
+</ul>
+</li>
+<li>A conexão irá acontecer, monitore o log do terminal;</li>
+<li>Se tudo deu certo, o drone o PC estão conectados e pronto para ser utilizado.</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>AINDA NAO É HORA DE DECOLAR, O DRONE DEVE ESTAR SEM HELICES!!</p>
+</div>
+<h2 id="analisando-topicos-nodes-e-imagem">Analisando tópicos, nodes e imagem<a class="headerlink" href="#analisando-topicos-nodes-e-imagem" title="Permanent link">&para;</a></h2>
+<p>Agora que já temos o drone o PC conectados, vamos aprender alguns comandos de ROS:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>No ROS é comum trabalhar com multiplos terminais abertos, cada terminal terá uma função especifica, por essa razão tenha cuidado para não fechar o terminal errado.</p>
+</div>
+<p>Abra um terminal novo, não feche o terminal anterior, vamos explorar os principais comados:</p>
+<p>Listar os tópicos do drone:</p>
+<div class="highlight"><pre><span></span><code>rostopic<span class="w"> </span>list
+</code></pre></div>
+<p>Abrir a camera do drone:</p>
+<div class="highlight"><pre><span></span><code>rqt_image_view
+</code></pre></div>
+<p>Visualizar a msg de um tópico:</p>
+<div class="highlight"><pre><span></span><code>rostopic<span class="w"> </span><span class="nb">echo</span><span class="w"> </span>/debop/odom
+</code></pre></div>
+<p>Decolar(takeoff) o drone:  ***com o drone sem helices, cuidado os motores vão ligar**</p>
+<div class="highlight"><pre><span></span><code>rostopic<span class="w"> </span>pub<span class="w"> </span>--once<span class="w"> </span>/bebop/takeoff<span class="w"> </span>std_msgs/Empty
+</code></pre></div>
+<p>Pousar (land) o drone:</p>
+<div class="highlight"><pre><span></span><code>rostopic<span class="w"> </span>pub<span class="w"> </span>--once<span class="w"> </span>/bebop/land<span class="w"> </span>std_msgs/Empty
+</code></pre></div>
+<p>Legal, estamos começando a entender como as coisas funcionam. Podemos controlar o drone com os comandos do terminal, mas não é eficiente. Vamos criar um script python para isso. </p>
+<div class="admonition progress">
+<p class="admonition-title">Progress</p>
+<p>Continuar...</p>
+</div>
+<h2 id="entendo-o-codigo-pythonros">Entendo o código Python/ROS<a class="headerlink" href="#entendo-o-codigo-pythonros" title="Permanent link">&para;</a></h2>
+<p>Existem algumas formas de criar um script python, Vamos dar uma olhada em um código pronto e análisar a sua estrutura. </p>
+<p>Vamos avaliar o código print_odom.py que está neste repositório na pasta <code>exemplos_drone/scripts/print_odom.py</code></p>
+<p>Este código irá exibir no terminal o valor da odometria (distância percorrida) pelo drone nas coordenadas lineares x, y e z.</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#! /usr/bin/env python3</span>
+<span class="c1"># -*- coding:utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">rospy</span> 
+
+<span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">Empty</span>
+<span class="kn">from</span> <span class="nn">nav_msgs.msg</span> <span class="kn">import</span> <span class="n">Odometry</span>
+
+
+<span class="c1"># Apenas valores para inicializar</span>
+<span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000</span>
+<span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000</span>
+<span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000</span>
+
+<span class="k">def</span> <span class="nf">recebeu_leitura</span><span class="p">(</span><span class="n">dado</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Grava nas variáveis x,y,z a posição extraída da odometria</span>
+<span class="sd">        Atenção: *não coincidem* com o x,y,z locais do drone</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">x</span>
+    <span class="k">global</span> <span class="n">y</span> 
+    <span class="k">global</span> <span class="n">z</span> 
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">dado</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">dado</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">dado</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&quot;print_odom&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Cria um subscriber que chama recebeu_leitura sempre que houver nova odometria</span>
+    <span class="n">recebe_odom</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;bebop/odom&quot;</span><span class="p">,</span> <span class="n">Odometry</span> <span class="p">,</span> <span class="n">recebeu_leitura</span><span class="p">)</span>
+
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
+            <span class="c1">## Código principal</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x </span><span class="si">{}</span><span class="s2"> y </span><span class="si">{}</span><span class="s2"> z </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">))</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ROSInterruptException</span><span class="p">:</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+</code></pre></div>
+<p>Vamos avaliar o código por partes.</p>
+<p>Começamos informando que vamos usar python3 no nosso código e que realizamos o importe das bibliotecas da ROS e da ROS Msg para compreender o formato das mensagens que vamos utilizar. Esses importes variam conforme o tópico que vamos utilizar</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#! /usr/bin/env python3</span>
+<span class="c1"># -*- coding:utf-8 -*-</span>
+
+<span class="kn">import</span> <span class="nn">rospy</span> 
+
+<span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">Empty</span>
+<span class="kn">from</span> <span class="nn">nav_msgs.msg</span> <span class="kn">import</span> <span class="n">Odometry</span>
+</code></pre></div>
+<p>Criamos e inicializamos as variaveis x, y e z. Criamos uma função de callback chamada <code>`recebeu_leitura</code> que será chamada toda a vez que houver um dado novo do tópico da odometria (que é configurado mais abaixo).</p>
+<p>Note que e ROS as chamadas são baseadas das funções de callback ocorrem por evento, de forma assincrona. Ou seja, não serão feitas pelo código principal.  </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Apenas valores para inicializar</span>
+<span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000</span>
+<span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000</span>
+<span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000</span>
+
+<span class="k">def</span> <span class="nf">recebeu_leitura</span><span class="p">(</span><span class="n">dado</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Grava nas variáveis x,y,z a posição extraída da odometria</span>
+<span class="sd">        Atenção: *não coincidem* com o x,y,z locais do drone</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">x</span>
+    <span class="k">global</span> <span class="n">y</span> 
+    <span class="k">global</span> <span class="n">z</span> 
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">dado</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">dado</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">dado</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span>
+</code></pre></div>
+<p>Inicializa o node "print_odom" para ser identificado pelo ROS master. 
+Subscreve (esculta) o tópico de odometria e realiza a chamada da função de callback "recebeu_leitura"</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="vm">__name__</span><span class="o">==</span><span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+    <span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&quot;print_odom&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Cria um subscriber que chama recebeu_leitura sempre que houver nova odometria</span>
+    <span class="n">recebe_odom</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Subscriber</span><span class="p">(</span><span class="s2">&quot;bebop/odom&quot;</span><span class="p">,</span> <span class="n">Odometry</span> <span class="p">,</span> <span class="n">recebeu_leitura</span><span class="p">)</span>
+</code></pre></div>
+<p>Nosso laço principal, o while é executdo de forma infinita até o usuário fechar o programa. O rospy.sleep(2) executa um loop a cada 2 segundos. </p>
+<div class="highlight"><pre><span></span><code>    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="n">rospy</span><span class="o">.</span><span class="n">is_shutdown</span><span class="p">():</span>
+            <span class="c1">## Código principal</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x </span><span class="si">{}</span><span class="s2"> y </span><span class="si">{}</span><span class="s2"> z </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">))</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="n">rospy</span><span class="o">.</span><span class="n">ROSInterruptException</span><span class="p">:</span>
+        <span class="n">rospy</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+</code></pre></div>
+<p>Agora que já entendemos, de forma breve, como o código funciona vamos rodar nosso código com o drone. </p>
+<h2 id="rodando-o-codigo-no-drone">Rodando o código no drone<a class="headerlink" href="#rodando-o-codigo-no-drone" title="Permanent link">&para;</a></h2>
+<p>Vamso rodar o nosso exemplo <code>print_odom.py</code>. </p>
+<p>Rodar um script python é um pouco diferente de rodar um código ROS em python, isso por que o ROS cria um ecosistema para rodar esse código, então a forma que vamos invocar o código será:</p>
+<p>Em um novo terminal, digite:</p>
+<div class="highlight"><pre><span></span><code>rosrun<span class="w"> </span>exemplo_drone<span class="w"> </span>print_odom.py
+</code></pre></div>
+<p>Para dar certo, o nosso notebook e o drone devem estar na mesma rede wifi e o comando <code>bebop.sh</code> tambem já está rodando.</p>
+<p>Caso o valores de odometria não atualize, faça o takeoff do drone (sem helice) antes e rode novamente.</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">May 27, 2023</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; Arnaldo Viana @ FIAP
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.b4d07000.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.0.0/js-yaml.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/gh/insper-education/active-handout-plugins-js@main/package/plugin-bundle.js"></script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+  </body>
+</html>
